@@ -12,13 +12,13 @@ import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ArrayListTest {
+class MyArrayListTest {
 
-    private List<Integer> data;
+    private MyList<Integer> data;
 
     @BeforeEach
     void prepareData(){
-        data = new ArrayList<Integer>();
+        data = new MyArrayList<Integer>();
     }
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
@@ -220,7 +220,7 @@ class ArrayListTest {
     @Test
     void overflow() throws NoSuchMethodException {
         data.addAll(new Integer[100]);
-        Method method = ArrayList.class.getDeclaredMethod("grow", int.class);
+        Method method = MyArrayList.class.getDeclaredMethod("grow", int.class);
         method.setAccessible(true);
 
         assertThrows(Exception.class,() -> {
